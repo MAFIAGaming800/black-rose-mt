@@ -1,0 +1,6 @@
+{
+  "name": "BLACK ROSE MT - Birthday Celebration",
+  "description": "A cinematic, mobile-first birthday experience and admin suite for BLACK ROSE MT by Shona Bhai.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

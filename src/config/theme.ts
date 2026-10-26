@@ -1,0 +1,18 @@
+export const THEME_COLORS = {
+  bgLight: '#FFF0F5',
+  secondary: '#FFE4EC',
+  lightPink: '#F8C8DC',
+  rosePink: '#EFA7C4',
+  champagne: '#F7E7CE',
+  pearlWhite: '#FFFAFC',
+  text: '#54263D',
+  textMuted: '#834F6A',
+  roseGold: '#B98575',
+  roseGoldLight: '#D89B8C',
+  wineDeep: '#3D1528',
+  glassBorder: 'rgba(185, 133, 117, 0.25)',
+  glassCard: 'rgba(255, 250, 252, 0.88)',
+  glassCardSecondary: 'rgba(255, 228, 236, 0.82)',
+  glowPink: 'rgba(239, 167, 196, 0.45)',
+  glowRoseGold: 'rgba(185, 133, 117, 0.35)',
+};

@@ -1,0 +1,228 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-pink: #fff0f5;
+    --bg-secondary: #ffe4ec;
+    --pink-light: #f8c8dc;
+    --pink-rose: #efa7c4;
+    --champagne: #f7e7ce;
+    --pearl-white: #fffafc;
+    --text-deep: #54263d;
+    --text-muted: #834f6a;
+    --rose-gold: #b98575;
+    --rose-gold-light: #d89b8c;
+    --wine-accent: #3d1528;
+  }
+
+  body {
+    background-color: #fff0f5;
+    color: #54263d;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-serif {
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Glass-like Dreamy Card */
+.glass-card {
+  background: rgba(255, 250, 252, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(185, 133, 117, 0.22);
+  box-shadow: 0 10px 30px -5px rgba(185, 133, 117, 0.12), 0 4px 14px -2px rgba(239, 167, 196, 0.15);
+}
+
+.glass-card-subtle {
+  background: rgba(255, 228, 236, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(239, 167, 196, 0.35);
+}
+
+/* Dreamy Rose Gold Shimmer Text */
+.shimmer-text {
+  background: linear-gradient(90deg, #b98575 0%, #efa7c4 35%, #834f6a 65%, #b98575 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-sweep 4s linear infinite;
+}
+
+@keyframes shimmer-sweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+/* Custom Candle & Flame Animations */
+@keyframes flame-flicker {
+  0%, 100% {
+    transform: scale(1) rotate(-1deg);
+    opacity: 0.95;
+    filter: drop-shadow(0 0 8px rgba(247, 231, 206, 0.9)) drop-shadow(0 0 16px rgba(239, 167, 196, 0.6));
+  }
+  25% {
+    transform: scale(1.08, 0.95) rotate(2deg);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px rgba(247, 231, 206, 1)) drop-shadow(0 0 20px rgba(185, 133, 117, 0.75));
+  }
+  50% {
+    transform: scale(0.95, 1.05) rotate(-2deg);
+    opacity: 0.9;
+    filter: drop-shadow(0 0 7px rgba(247, 231, 206, 0.85)) drop-shadow(0 0 14px rgba(239, 167, 196, 0.5));
+  }
+  75% {
+    transform: scale(1.04, 1.02) rotate(1deg);
+    opacity: 0.98;
+    filter: drop-shadow(0 0 10px rgba(247, 231, 206, 0.95)) drop-shadow(0 0 18px rgba(185, 133, 117, 0.7));
+  }
+}
+
+.animate-flame {
+  animation: flame-flicker 1.8s infinite ease-in-out;
+  transform-origin: bottom center;
+}
+
+/* Smoke particles matching Champagne / Pearl White */
+@keyframes smoke-curl-1 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.6);
+    opacity: 0.85;
+  }
+  30% {
+    transform: translate3d(-6px, -18px, 0) scale(1.1);
+    opacity: 0.65;
+  }
+  70% {
+    transform: translate3d(4px, -38px, 0) scale(1.6);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translate3d(-8px, -56px, 0) scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes smoke-curl-2 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.5);
+    opacity: 0.9;
+  }
+  35% {
+    transform: translate3d(8px, -20px, 0) scale(1.2);
+    opacity: 0.7;
+  }
+  75% {
+    transform: translate3d(-5px, -42px, 0) scale(1.8);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate3d(10px, -62px, 0) scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes smoke-curl-3 {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.7);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translate3d(-3px, -28px, 0) scale(1.4);
+    opacity: 0.45;
+  }
+  100% {
+    transform: translate3d(3px, -52px, 0) scale(2.0);
+    opacity: 0;
+  }
+}
+
+@keyframes smoke-ember {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+    opacity: 1;
+  }
+  60% {
+    transform: translate3d(-4px, -22px, 0) scale(0.7);
+    opacity: 0.75;
+  }
+  100% {
+    transform: translate3d(6px, -44px, 0) scale(0.1);
+    opacity: 0;
+  }
+}
+
+.animate-smoke-1 {
+  animation: smoke-curl-1 1.6s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.animate-smoke-2 {
+  animation: smoke-curl-2 1.7s 0.12s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.animate-smoke-3 {
+  animation: smoke-curl-3 1.8s 0.22s forwards cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.animate-smoke-ember {
+  animation: smoke-ember 1.3s 0.05s forwards ease-out;
+  will-change: transform, opacity;
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-slow-spin {
+  animation: slow-spin 24s linear infinite;
+}
+
+/* Birthday Wishes Scrolling Ticker Animation */
+@keyframes ticker-scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+.animate-ticker {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-ticker:hover,
+.ticker-paused {
+  animation-play-state: paused !important;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

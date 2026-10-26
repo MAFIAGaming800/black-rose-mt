@@ -1,0 +1,770 @@
+# MASTER BUILD PROMPT — BLACK ROSE MT BIRTHDAY WEBSITE
+
+## 1. YOUR ROLE AND PRIMARY OBJECTIVE
+
+Act as a senior full-stack developer, creative director, UI/UX designer, 3D interaction developer, audio/video integration specialist, accessibility engineer, and QA tester.
+
+I already have an existing birthday website project called **BLACK ROSE MT** in Google AI Studio Build Mode. Your job is to carefully inspect, repair, complete, and polish the existing project according to every requirement below.
+
+**This is an existing-project repair and completion task, NOT a request to create a completely new website from scratch.**
+
+Before making changes:
+
+1. Inspect the existing project structure, current source files, dependencies, routes, components, animations, uploaded assets, audio files, and existing content.
+2. Identify all working features that must be preserved.
+3. Locate the existing opening sequence and recover its previous implementation from available project history or existing source files if possible.
+4. Identify broken, missing, incomplete, or disconnected scenes.
+5. Make the smallest safe changes necessary to complete the website.
+6. Preserve existing working features, supplied names, original logos, photos, letter content, and assets.
+7. Do not delete or rewrite working sections merely to simplify the implementation.
+8. Do not replace the existing website with a generic birthday template.
+9. Do not invent missing personal names, logos, photos, videos, or personal details.
+10. Do not claim that a feature is complete or tested unless you have actually implemented and verified it.
+
+If any requirement conflicts with the existing application architecture, choose the safest implementation that preserves the user's intended visual experience and functionality. Explain any genuine technical limitation rather than silently omitting a feature.
+
+## 2. GLOBAL DESIGN SYSTEM
+
+The complete website should feel like one cohesive, premium, emotional, cinematic birthday experience.
+
+### Colour palette
+
+Use these colours consistently:
+
+- Blush pink: #FFF0F5
+- Soft pink: #FFE4EC
+- Rose pink: #F8C8DC
+- Rose gold: #B98575
+- Champagne: #F7E7CE
+- Pearl white: #FFFAFC
+- Deep berry: #54263D
+
+Use soft gradients, subtle blur, rose-gold highlights, delicate particles, floating rose petals, tasteful glow, smooth scene transitions, and elegant lighting.
+
+Avoid excessive visual clutter, unreadable text, harsh flashes, cheap-looking effects, and unnecessary decorations.
+
+### Typography and language
+
+- All visible text must use Roman Urdu and/or Roman English.
+- Never use Urdu script.
+- Use stylish, elegant, readable fonts.
+- Use a typewriter effect where specified.
+- Keep adequate contrast between text and background.
+- Make all messages readable on small screens.
+- Do not rush emotional messages.
+- Preserve the supplied spelling of names and brand text.
+
+### Original brand assets
+
+**BLACK ROSE MT is the exact brand identity.**
+
+Use only the original BLACK ROSE MT logo supplied by the user. Never generate a replacement logo, redraw it, change its lettering, or substitute a text logo for the actual asset when the original logo is available.
+
+Never invent the birthday girl's real name.
+
+Use each friend's own supplied logo in the appropriate scene.
+
+### Global interaction rules
+
+- Remove all buttons labelled “Skip This”, “Skip this”, or equivalent skip-scene controls from every scene and card.
+- Do not add unwanted navigation menus or extra options to minimal scenes.
+- Use smooth transitions and responsive interactions.
+- Prevent double-clicks or repeated interactions from breaking the sequence.
+- Prevent overlapping audio tracks.
+- Ensure animations, timers, and event listeners are cleaned up when scenes change.
+- Respect reduced-motion preferences where feasible without removing essential functionality.
+- Never autoplay unexpected audio before the intended opening sequence.
+- Provide a reliable way to recover from an asset-loading failure without leaving the website permanently stuck.
+
+## 3. ASSET MANAGEMENT — CRITICAL
+
+The user will supply additional videos, pictures, and logos after finding them.
+
+First inspect the assets that actually exist in the project. Chat attachments are not necessarily available to the running application, so verify whether each file has been imported into the project.
+
+Create a central asset manifest or equivalent mapping configuration so each media asset can be associated with its correct scene.
+
+Use clear logical identifiers such as:
+
+- `countdownVideo`
+- `cakeReferenceImage`
+- `birthdayGirlPhoto`
+- `brandLogo`
+- `friendLogoPrimexAhmed`
+- `friendLogoPrimexHaxx`
+- `friendLogoNexoGaming`
+- `friendLogoAbhixPlayz`
+- `friendLogoMSR`
+- `friendLogoVishal`
+- `jumpScareVideo`
+- `friendLetterVideo_<friendId>`
+
+These are logical identifiers, not assumed existing filenames. Map them to the actual imported assets when available.
+
+### Asset requirements
+
+1. Do not invent filenames or pretend a missing file exists.
+2. Do not replace missing user-provided videos with unrelated stock videos, AI-generated clips, or random YouTube embeds.
+3. Do not replace the user's original pictures with newly generated similar pictures.
+4. Preserve original logos, faces, clothing, colours, composition, and supplied visual details.
+5. If a required asset is missing, keep a clearly identifiable placeholder and document exactly which file is needed and where it belongs.
+6. Keep the asset mapping easy for a beginner to update.
+7. Avoid making the user manually edit multiple components just to change one asset.
+8. If a video is supplied later, its mapped scene should use it without requiring a redesign of the whole website.
+9. Do not claim that all videos are integrated until the actual files are present and verified.
+10. Do not expose private API keys, credentials, or secrets in client-side files.
+
+The goal is to make the project ready for the user's additional assets and allow one well-organized integration pass once all files have been imported.
+
+## 4. OPENING SEQUENCE — EXACT ORDER
+
+The opening sequence has already existed in the project but became broken during previous edits. Restore and repair it before adding new features.
+
+Recover the previous implementation from available project history or source files wherever possible. Do not discard other existing scenes while fixing the opening.
+
+### Stage 1: Countdown video
+
+Use the user's existing uploaded MP4 named `videoplayback (2).mp4` if it is available and verified in the project assets.
+
+This is the countdown video. It is NOT the Shona Bhai video and must not be reused as a substitute for another video.
+
+Requirements:
+
+- Full-screen, edge-to-edge presentation.
+- No YouTube embed.
+- No YouTube branding.
+- No unnecessary player controls or overlays.
+- Use `object-fit: cover` and appropriate positioning to fill the screen.
+- Preserve the video's aspect ratio; never stretch or distort it.
+- Keep the important speaker and countdown visible as much as possible.
+- Handle mobile and desktop aspect ratios gracefully.
+- Use only this video's own audio during this stage.
+
+The exact GO moment must be detected using the video's actual timing or a verified event marker. Do not guess the GO timestamp if it is not known.
+
+At GO:
+
+- Stop playback.
+- Pause the video.
+- Stop its audio immediately.
+- Prevent its audio from continuing in the background.
+- Transition to the next stage.
+
+If the video is not yet imported, create an asset placeholder and document the missing file. Do not silently substitute a different video.
+
+### Stage 2: Five seconds of complete silence
+
+Immediately after GO, show a pure black screen for exactly 5 seconds.
+
+During these 5 seconds:
+
+- No text.
+- No logo.
+- No particles.
+- No animation.
+- No music.
+- No heartbeat.
+- No residual countdown-video audio.
+
+This silence is intentional and must not be removed.
+
+### Stage 3: Heartbeat
+
+After the five-second silent interval finishes:
+
+- Begin the existing or supplied heartbeat sound.
+- Keep the screen black.
+- Add a subtle pink heartbeat glow/pulse.
+- Keep the effect elegant and understated.
+
+Do not introduce extra text unless it already exists as an intentional, verified requirement.
+
+### Stage 4: Happy Birthday crowd audio
+
+After the heartbeat stage, play the existing Happy Birthday crowd audio already available in the project.
+
+It should include people saying “Happy Birthday” and their short celebratory cheering.
+
+Let the actual greeting and short cheer finish before advancing to the cake scene.
+
+Do not guess a duration if the audio file's length can be inspected.
+
+### Audio synchronization
+
+The required sequence is:
+
+COUNTDOWN MP4 AND ITS AUDIO → STOP AT GO → 5 SECONDS TOTAL SILENCE → HEARTBEAT AND SUBTLE PINK PULSE → EXISTING HAPPY BIRTHDAY CROWD AUDIO → CAKE ENTRANCE.
+
+No two unrelated audio tracks should overlap.
+
+Handle playback rejection, audio-loading failure, repeated scene entry, and component cleanup safely. A failed audio file must not leave the website permanently frozen.
+
+## 5. REAL BIRTHDAY COUNTDOWN AND TEST MODE
+
+The real birthday is:
+
+**17 November 2026 at 00:00, Asia/Karachi time.**
+
+Use the real target timestamp consistently.
+
+Requirements:
+
+- Display the correct remaining time.
+- Handle timezone and daylight-saving differences correctly.
+- Do not use the visitor's device clock as the sole authority for unlocking the birthday.
+- Changing the device clock must not unlock the public experience early.
+- If reliable server-side verification is required, implement it using the project's actual backend capabilities.
+- Do not fake server-side security using a frontend-only timer.
+
+A separate admin/test preview should allow a 30-second test countdown where appropriate. This must never change the public birthday deadline.
+
+The test mode must be protected appropriately and must not be exposed as a public birthday-unlock shortcut.
+
+If backend configuration, Supabase, or environment variables are required, provide beginner-friendly setup instructions. Do not invent credentials or claim the backend is secured before verification.
+
+## 6. CAKE ENTRANCE — PRESERVE THE ORIGINAL REFERENCE
+
+Use the exact cake-scene picture previously supplied by the user as the authoritative visual reference.
+
+The user explicitly requires the same design without redesign.
+
+Preserve the original reference's:
+
+- Background.
+- Boy and girl characters.
+- Faces and hairstyles.
+- Clothing, colours, and proportions.
+- Cake and trolley.
+- Balloons and balloon arch.
+- Flowers.
+- Chandeliers and lights.
+- Curtains.
+- Floor and scene composition.
+
+**Do not regenerate the reference image as a replacement. Do not use a concept image as the actual scene asset.**
+
+The intended result is a visually matching scene in which the two cute 3D-style characters physically walk into the scene while pushing a trolley with the cake.
+
+Use the original image as the background or scene reference and implement matching character/trolley animation assets or rigged characters if available.
+
+If the supplied image is a flattened picture without separate character assets, do not claim that its characters can be perfectly animated independently without additional assets or processing. Preserve the original appearance and explain any technical limitation.
+
+### Cake interaction
+
+Use a cute pink Barbie-style birthday cake.
+
+1. Show individually interactive candles.
+2. Allow each candle to be tapped or clicked.
+3. Extinguish each selected flame individually.
+4. Add a subtle smoke effect when a flame goes out.
+5. When all candles are extinguished, display a clear instruction to swipe the cake.
+6. Allow swiping in any direction: horizontal, vertical, or diagonal.
+7. Show the cake visibly separating along the swipe path.
+8. Allow multiple cuts.
+9. Keep cut pieces visibly separated instead of automatically restoring the original cake.
+
+Implement real mesh slicing if the current rendering technology supports it. Otherwise, use a feasible polygon-clipping or layered-piece technique.
+
+Do not merely draw a line over an intact cake and pretend that it has been sliced.
+
+There must be no cake-cut button.
+
+Ensure touch and mouse interactions work, handle viewport resizing, and avoid triggering multiple cuts from one gesture.
+
+After the required interactions are complete, automatically transition to the next scene.
+
+## 7. BIRTHDAY GIRL AND FRIEND INTRODUCTIONS
+
+After the cake scene, begin the identity introduction sequence.
+
+First show the BLACK ROSE MT identity with the original logo and the supplied birthday-girl photo where intended.
+
+Then introduce the other supplied identities one at a time, each in its own distinct animation scene.
+
+The following six friend names must be preserved exactly:
+
+1. PrimexAhmed
+2. PrimexHaxx
+3. Nexo gaming
+4. AbhixPlayz
+5. MSR
+6. Vishal
+
+Inspect the existing project for any additional identity or existing name that must be preserved. Do not invent a seventh identity if it is not present.
+
+Requirements:
+
+- Use the supplied logo for each identity.
+- Do not invent replacement logos.
+- Reveal only the current identity; future names must not appear prematurely.
+- Use individual cinematic entrances and smooth transitions.
+- Preserve the exact spelling and capitalization of supplied names.
+- Do not remove existing content simply because its asset is temporarily missing.
+
+## 8. ALL RIBBON ENVELOPES IN ONE GRID
+
+After all identity introductions are complete, show all friend envelopes together in a responsive grid.
+
+The user has explicitly selected this design: **all envelopes appear together, and the birthday girl can open them in any order.**
+
+Each envelope should have:
+
+- A ribbon/envelope design.
+- A visible “Click to Open” label.
+- A distinct opening animation.
+- A heartfelt, personalized message or dua.
+- A supplied video associated with the correct letter if one is provided for that friend.
+- A typewriter effect for the text.
+- Adequate reading time.
+- A reliable close interaction.
+
+When a letter opens:
+
+- Present it as an elegant overlay or modal.
+- Apply an appropriate background blur.
+- Keep the letter text readable.
+- Provide a visible close button.
+- Support Escape to close where appropriate.
+- Implement proper focus management and keyboard accessibility.
+- Prevent the background page from accidentally triggering interactions through the modal.
+
+Track which letters have been opened and completed according to the actual interaction design.
+
+Do not advance to the next section until all required letters have been completed according to the intended flow.
+
+Do not force a fixed opening order.
+
+Create genuinely different heartfelt duas for each friend. Do not copy the same message into every letter. Avoid inventing personal memories, experiences, or biographical facts.
+
+When letter videos are provided, map them to their intended letter. If a file is missing, leave that specific media slot unfilled and identify the missing asset.
+
+## 9. SHONA BHAI SPECIAL GRAND ENTRY
+
+After the friends' letters, introduce Shona Bhai in a separate grand cinematic scene.
+
+The user selected:
+
+- Grand 3D rotation.
+- Glowing particles.
+- Floating rose petals.
+- Elegant rose-gold lighting.
+- A dramatic but smooth entrance.
+- Emotional text and heartfelt duas.
+- A readable typewriter effect.
+
+The message must express the sibling/friend bond, respect, encouragement, and genuine duas.
+
+Do not introduce romantic ambiguity, possessiveness, or unrealistic guarantees.
+
+This section must not feel like an ordinary static title card.
+
+## 10. “EK CHOTI SI MASTI” — DODGING BUTTON
+
+After the Shona Bhai entry, show a playful, minimal full-screen page.
+
+The only visible content should be:
+
+Heading:
+**Ek Choti Si Masti**
+
+Button:
+**Pakro Mujhe! 😜**
+
+Use a subtle pink background and keep the composition clean.
+
+Do not add extra options, unnecessary paragraphs, or skip controls.
+
+### Button behaviour
+
+1. When the challenge begins, the button should dodge across the full usable screen.
+2. It must move within the viewport without being clipped or becoming unreachable.
+3. The challenge lasts 20–25 seconds.
+4. When that time ends, the button becomes stationary.
+5. The stationary button remains visible and clickable.
+6. Only after the button has stopped and the user clicks it should the jump-scare video begin.
+7. Play the user's supplied jump-scare video full-screen.
+8. Do not invent or substitute a jump-scare video if the user's file has not been imported.
+9. When the video ends, show a short, funny transition before the games begin.
+
+Ensure the timer is reliable and cleans up properly if the component unmounts.
+
+## 11. THREE GAMES WITH CINEMATIC INTRODUCTIONS
+
+Create three complete, playable games, in this order.
+
+Each game must have its own cinematic intro, responsive gameplay, smooth animations, multiple levels where appropriate, increasing or mixed difficulty, hints, retry behaviour, funny incorrect-answer reactions, and a victory animation.
+
+### Game 1 — The Trick Door 🚪
+
+Subtitle: **Sahi Darwaza Kaunsa Hai?**
+
+- Show three doors.
+- Present logical riddles or clues.
+- Require the player to select the correct door.
+- Use a correct answer to unlock the next stage or door.
+- Provide sensible hints and retry behaviour.
+- Do not make the solution arbitrary or impossible to infer.
+
+### Game 2 — Memory Trap 👀
+
+Subtitle: **Yaad Hai Ya Nahi?**
+
+- Show a pattern, sequence, or set of symbols for a limited period.
+- Hide the pattern.
+- Ask the player to recall the sequence or identify the missing symbol.
+- Increase difficulty as the game progresses.
+- Provide clear instructions and feedback.
+
+### Game 3 — Don’t Trust Your Eyes 😈
+
+Subtitle: **Dimagh Ka Dhoka**
+
+- Include optical illusions, misleading questions, and mind traps.
+- Ensure every question has a defensible intended answer.
+- Do not make incorrect or ambiguous logic appear correct.
+- Use playful visual reactions and difficulty progression.
+
+### Game transitions
+
+For all three games:
+
+- Show a cinematic intro before gameplay.
+- Animate transitions between meaningful stages.
+- Show a victory animation when a game is completed.
+- Transition smoothly into the next game's intro.
+- Preserve mobile usability and touch interactions.
+- Ensure the final game transitions into the dua section.
+- Do not include skip buttons.
+
+The games must actually work; do not create static mockups that only look playable.
+
+## 12. SECTION 5 — “A SKY FULL OF DUAS 🌙”
+
+After the three games, start the emotional dua sequence.
+
+Use a dreamy pink night-sky atmosphere featuring:
+
+- A crescent moon.
+- Glowing stars.
+- Soft clouds.
+- Floating rose petals.
+- Subtle magical lighting.
+- Elegant cinematic animation.
+
+Each dua must appear in its own separate full-screen scene, not as a list of all duas on a single page.
+
+Use a readable typewriter effect and give each message adequate reading time. Do not rush or immediately auto-advance while the user is reading.
+
+### Preserve the first supplied stationery reference
+
+The user provided an exact envelope/stationery reference for this section.
+
+Use the actual supplied image as the authoritative visual reference. Preserve its original:
+
+- Envelope.
+- Ribbon.
+- Wax seal.
+- Cream paper.
+- Flowers.
+- Colours.
+- Composition and delicate details.
+
+Do not substitute a generated approximation or redesign the stationery.
+
+The original reference image can be used as the stationery asset or integrated into the scene as appropriate.
+
+### Required duas
+
+Dua 1:
+
+“Allah tumhari zindagi ko khushiyon se bhar de, tumhari smile hamesha qaim rahe aur tumhara dil sukoon mein rahe. Ameen. 🤍”
+
+Dua 2:
+
+“Allah tumhari har achi mehnat mein barkat de, tumhare liye kamyabi ke raaste kholay aur tumhein apne khwabon tak pohanchaye. Ameen. 🌙”
+
+Dua 3:
+
+“Allah tumhein har pareshani mein himmat, har mushkil mein asaani aur har naye din mein umeed ata farmaye. Ameen. 🌷”
+
+Dua 4:
+
+“Allah tumhari jaiz duaon ko qabool farmaye aur tumhara aane wala har saal pehle se zyada khoobsurat banaye. Ameen. ✨”
+
+Give each dua its own star-glow reveal and smooth transition.
+
+Do not alter the core wording without a genuine technical reason.
+
+## 13. SECTION 6 — “FROM SHONA BHAI, WITH DUAS 💌”
+
+This section uses the user's second supplied stationery reference.
+
+**No video is to be used in the Shona Bhai letter section.**
+
+The user explicitly clarified this. Do not attach the countdown MP4, jump-scare video, or any other video to this letter.
+
+### Preserve the second supplied reference
+
+Use the actual original pink-letter reference image.
+
+Preserve its original:
+
+- Pink paper and letter design.
+- Roses.
+- Warm candlelight.
+- Colours.
+- Composition.
+- Overall stationery appearance.
+
+Do not replace it with a newly generated approximation.
+
+The letter should appear as an elegant pink stationery card with a readable typewriter effect. Use subtle petals and gentle cinematic lighting.
+
+Soft piano music may be used at low volume, provided it does not overlap any unrelated audio. Keep the music unobtrusive and provide a sensible fallback if audio playback is unavailable.
+
+### Letter content
+
+Use the user's latest edited version as the source of truth. Preserve its intended meaning and the user's edits.
+
+The letter's intended content includes:
+
+**From Shona Bhai, With Duas 💗**
+
+Happy Birthday, BLACK ROSE MT! 🌸
+
+Dua hai ke Allah tumhari zindagi ko khushiyon, sukoon aur kamyabi se bhar de. Tumhare chehre ki smile hamesha qaim rahe aur tumhein zindagi mein woh sab kuch mile jo tumhare haq mein behtar ho.
+
+Zindagi mein kabhi achay din aayenge aur kabhi mushkil waqt bhi hoga. Meri dua hai ke Allah har mushkil mein tumhein himmat de, tumhare dil ko sukoon de aur tumhein hamesha sahi raasta dikhaye.
+
+Tumhari dosti mere liye qeemti hai. Hamesha apni izzat, apni pehchan aur apni khushi ka khayal rakhna. Apne khwabon ke liye mehnat karna aur kabhi apne aap par yaqeen khona mat.
+
+**Allah tumhein hamesha apni hifazat mein rakhe. Ameen. 🤍**
+
+Hamesha khush rehna, apni smile kabhi mat khona.
+
+**With duas, respect & friendship,**
+
+**Tumhara Pyara Bhai Aur Dost — Shona Bhai** 🌹
+
+Also preserve the user's later-edited sentiments:
+
+“Hamesha tumhara Bhai tumhare sath hai, jab bhi dil kare to yaad kar lena.”
+
+“Tumhari khushi bohat qeemti hai.”
+
+Do not introduce a video into this section.
+
+## 14. FINAL BIRTHDAY REVEAL — OPTION C
+
+The user explicitly selected Option C.
+
+Create a grand cinematic birthday reveal that combines:
+
+- A magical blush-pink birthday stage.
+- Giant 3D “HAPPY BIRTHDAY BLACK ROSE MT” typography.
+- The exact original BLACK ROSE MT logo.
+- A glowing birthday cake.
+- Rose-gold cinematic lighting.
+- Floating rose petals.
+- Fireworks and celebratory particles.
+- Smooth, premium entrance animations.
+
+This should be the visual climax of the entire website.
+
+Do not replace the original logo with text or an invented logo.
+
+Ensure the main birthday text is correctly spelled and readable on mobile screens.
+
+The stage, typography, and effects should feel grand but remain elegant and consistent with the website's pink theme.
+
+## 15. FINAL EMOTIONAL MESSAGE AND THANK YOU
+
+The user rejected the generic phrase “Thank You for Being You”.
+
+The final ending must instead communicate that Shona Bhai cares about the birthday girl, prays for her happiness, and wants her to remember their sibling/friend bond.
+
+Include both of these selected lines:
+
+**“Zindagi ke har mor par, tumhara Bhai tumhare liye dua-go rahega.” ❤️‍🩹🌹**
+
+“Jab bhi dil udaas ho, yaad rakhna… tumhare liye dua karne wala tumhara Bhai hamesha yahin hai. 🤍”
+
+Continue with a heartfelt message expressing:
+
+- Prayers for happiness, peace, courage, and success.
+- Encouragement to keep smiling and value herself.
+- The importance of genuine friendship and respect.
+- A sincere prayer for Allah's protection.
+- The reassurance that she can remember her Bhai whenever she feels sad or needs someone to talk to.
+
+Do not promise that a person can physically be present at every moment or make unrealistic guarantees. Keep the wording warm, sincere, and natural.
+
+Preserve the user's chosen wording and avoid inventing personal memories.
+
+### Ending animation
+
+Show the final message in a beautiful cinematic sequence:
+
+1. Reveal the emotional message gradually with a readable typewriter effect.
+2. Add soft pink glow and floating rose petals.
+3. Reveal the exact phrase **“Love From Your Shona Bhai”** elegantly.
+4. After that, reveal **“THANK YOU”** in beautiful 3D lettering.
+5. Add rose-gold highlights, soft golden sparkles, and a gentle finishing animation.
+6. Show a clear **Replay** button below the ending.
+
+Do not show “Thank You for Being You” anywhere as the final headline.
+
+The order is important:
+
+EMOTIONAL MESSAGE → LOVE FROM YOUR SHONA BHAI → THANK YOU → REPLAY BUTTON.
+
+The ending should feel heartfelt, memorable, elegant, and complete.
+
+## 16. REPLAY AND NAVIGATION STATE
+
+The Replay button must restart the experience safely.
+
+- Reset scene state.
+- Reset letter/game completion state as appropriate.
+- Stop active audio tracks.
+- Pause active videos.
+- Clear timers and pending animation callbacks.
+- Reset the dodging-button challenge.
+- Reset the cake interaction if replaying the entire experience.
+- Avoid duplicate event listeners.
+- Avoid forcing the browser to close or reload into a broken state.
+- Return the user to the intended starting screen.
+
+The public birthday security rules must still apply after replay.
+
+## 17. ADMIN, BACKEND, AND DEPLOYMENT
+
+Keep the project beginner-friendly and as low-cost as possible.
+
+Inspect the current stack before adding new dependencies.
+
+If the project already has a working backend, reuse it where appropriate.
+
+If real authentication or server-authoritative birthday verification requires a backend such as Supabase:
+
+- Explain why it is needed.
+- Implement only the required features.
+- Use server-side verification for protected operations.
+- Keep credentials in environment variables or secure server-side configuration.
+- Never put private service-role keys or secret credentials in frontend code.
+- Never pretend that a frontend-only password is secure.
+- Provide clear setup steps if the user must configure a backend.
+- Do not invent credentials or claim deployment is complete without actual verification.
+
+Aim for a free Vercel deployment where compatible.
+
+Provide a concise README explaining:
+
+- Project setup.
+- Asset locations and naming.
+- How to add the remaining videos and logos.
+- Required environment variables.
+- How to configure the real birthday deadline.
+- How to enable admin/test mode safely.
+- How to build and deploy the application.
+
+## 18. ERROR HANDLING AND PERFORMANCE
+
+- Use lazy loading for large media where appropriate.
+- Optimize video playback without changing the original files unnecessarily.
+- Avoid loading all large videos simultaneously.
+- Clean up audio, timers, event listeners, and animation loops when leaving a scene.
+- Prevent state corruption when a user clicks repeatedly.
+- Provide a useful fallback for missing assets.
+- Keep the layout responsive.
+- Prevent text overflow.
+- Avoid horizontal scrolling on mobile.
+- Maintain readable contrast.
+- Respect browser autoplay restrictions.
+- Avoid unnecessary libraries if the existing stack already supports the feature.
+- Do not make the app depend on inaccessible external URLs for user-supplied files.
+- Do not silently skip a required scene because an asset failed to load.
+
+## 19. REQUIRED TESTING
+
+After implementing the changes, run the available build, type checks, linting, and tests.
+
+Test each major feature:
+
+1. Countdown target and timezone.
+2. Countdown video rendering and audio.
+3. Exact GO transition.
+4. Five seconds of complete silence.
+5. Heartbeat timing.
+6. Happy Birthday crowd audio and scene transition.
+7. Recovery from missing audio or video.
+8. Cake scene visual preservation and entrance.
+9. Individual candle extinguishing.
+10. Cake swipe interaction and multiple cuts.
+11. Identity reveal order and original logos.
+12. Envelope grid and opening any letter in any order.
+13. Letter completion tracking.
+14. Shona Bhai entry.
+15. Confirmation that no video appears in the Shona Bhai letter section.
+16. Dodging button duration and stationary state.
+17. Jump-scare video playback.
+18. Funny transition.
+19. All three playable games and their transitions.
+20. Four individual dua scenes.
+21. Both original stationery references.
+22. Final Option C reveal.
+23. Emotional message, “Love From Your Shona Bhai”, and “THANK YOU” in the correct order.
+24. Replay resets the experience correctly.
+25. Mobile and desktop layouts.
+26. Absence of all skip buttons.
+27. Audio and animation cleanup.
+28. Public countdown cannot be unlocked merely by changing the device clock, if server-side verification has been configured.
+
+Do not report tests as passing unless they actually ran and passed. If a test cannot be performed, say so clearly.
+
+## 20. FINAL EXECUTION INSTRUCTIONS
+
+Work through this task carefully.
+
+Priority order:
+
+1. Preserve and recover the existing project.
+2. Repair the broken opening sequence.
+3. Preserve the user's original reference pictures and brand assets.
+4. Implement the scene order and interactions.
+5. Implement all three games.
+6. Implement the dua and letter scenes.
+7. Implement the final birthday reveal and ending.
+8. Connect available videos to their correct scenes.
+9. Identify missing assets clearly.
+10. Verify the build and report actual test results.
+
+Do not remove working features to make the task easier.
+
+Do not substitute unrelated media.
+
+Do not invent personal information.
+
+Do not use generated images as replacements for the user's exact reference pictures.
+
+Do not add videos to the Shona Bhai letter section.
+
+Do not introduce skip buttons.
+
+Do not replace the final headline with “Thank You for Being You”.
+
+Do not make a fresh generic website instead of repairing the existing project.
+
+Do not claim that missing assets have been integrated.
+
+**Before finishing, provide a concise completion report with:**
+
+- Features completed.
+- Existing features preserved.
+- Assets successfully mapped.
+- Assets still missing and the exact scene each belongs to.
+- Backend or environment configuration still required.
+- Build and test results.
+- Any genuine limitations that remain.
+
+The goal is a beautiful, fully functional, emotionally meaningful BLACK ROSE MT birthday website that follows the user's decisions precisely, preserves the original assets, and does not damage the existing project.
