@@ -21,11 +21,20 @@ export const AdminModal: React.FC<AdminModalProps> = ({
   const [isEnvConfigured, setIsEnvConfigured] = useState<boolean>(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const readJsonResponse = async (res: Response) => {
+    const text = await res.text();
+    try {
+      return text ? JSON.parse(text) : {};
+    } catch {
+      throw new Error(res.ok ? 'The server returned an invalid response.' : 'Admin service is unavailable. Please try again later.');
+    }
+  };
+
   // Check admin setup status on open
   useEffect(() => {
     if (!isOpen) return;
     fetch('/api/admin/status')
-      .then((res) => res.json())
+      .then(readJsonResponse)
       .then((data) => {
         setIsEnvConfigured(data.configured);
       })
@@ -46,7 +55,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ password }),
       });
-      const data = await res.json();
+      const data = await readJsonResponse(res);
       if (!res.ok) throw new Error(data.error || 'Login failed');
 
       setToken(data.token);
@@ -67,7 +76,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         method: 'POST',
         headers: { Authorization: `Bearer ${token}` },
       });
-      const data = await res.json();
+      const data = await readJsonResponse(res);
       if (!res.ok) throw new Error(data.error || 'Failed to start preview');
 
       onStart20sPreview(data.previewToken);
@@ -93,7 +102,7 @@ export const AdminModal: React.FC<AdminModalProps> = ({
           },
           body: JSON.stringify({ type, data: base64 }),
         });
-        const data = await res.json();
+        const data = await readJsonResponse(res);
         if (res.ok) {
           setStatusMsg(`Successfully uploaded original ${type}!`);
           const assetsRes = await fetch('/api/admin/assets');
@@ -185,6 +194,17 @@ export const AdminModal: React.FC<AdminModalProps> = ({
         ) : (
           /* Authenticated Admin Suite */
           <div className="space-y-5 animate-in fade-in duration-300">
+            <button
+              type="button"
+              onClick={() => {
+                setToken(null);
+                setPassword('');
+                setStatusMsg(null);
+              }}
+              className="text-xs text-[#834F6A] underline hover:text-[#54263D]"
+            >
+              Log out
+            </button>
             {statusMsg && (
               <div className="p-2.5 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-800 text-xs flex items-center gap-2 font-medium">
                 <CheckCircle className="w-4 h-4 text-emerald-600" />

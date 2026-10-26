@@ -22,7 +22,7 @@ const BIRTHDAY_DEADLINE_ISO = '2026-11-17T00:00:00+05:00';
 export const TARGET_TIMESTAMP = new Date(BIRTHDAY_DEADLINE_ISO).getTime(); // 1794855600000
 
 const SESSION_SECRET = process.env.SESSION_SECRET || 'blackrose_mt_shonabhai_secret_key_2026';
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || '';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD;
 
 // In-memory or filesystem storage for uploaded assets
 const assetsDir = path.resolve(__dirname, 'public', 'assets');
@@ -111,8 +111,8 @@ app.get('/api/admin/status', (_req: Request, res: Response) => {
   res.json({
     configured: Boolean(ADMIN_PASSWORD),
     message: ADMIN_PASSWORD
-      ? 'Admin security active with server environment password'
-      : 'Notice: ADMIN_PASSWORD is not set in .env. Default setup required for production.',
+      ? 'Admin security is configured.'
+      : 'Admin security is not configured on this deployment.',
   });
 });
 
@@ -123,9 +123,12 @@ app.post('/api/admin/login', (req: Request, res: Response) => {
     return res.status(400).json({ error: 'Password is required' });
   }
 
-  const expectedPassword = ADMIN_PASSWORD || 'shonabhai2026';
+  if (!ADMIN_PASSWORD) {
+    return res.status(503).json({ error: 'Admin login is not configured on this deployment.' });
+  }
+
   const passBuffer = Buffer.from(password);
-  const expectedBuffer = Buffer.from(expectedPassword);
+  const expectedBuffer = Buffer.from(ADMIN_PASSWORD);
 
   let match = false;
   if (passBuffer.length === expectedBuffer.length) {
@@ -265,12 +268,15 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, '0.0.0.0', () => {
-    console.log(`Server running on http://0.0.0.0:${PORT}`);
-    console.log(`Authoritative Asia/Karachi Birthday Deadline: ${BIRTHDAY_DEADLINE_ISO}`);
-  });
+  if (process.env.VERCEL !== '1') {
+    app.listen(PORT, '0.0.0.0', () => {
+      console.log(`Server running on http://0.0.0.0:${PORT}`);
+      console.log(`Authoritative Asia/Karachi Birthday Deadline: ${BIRTHDAY_DEADLINE_ISO}`);
+    });
+  }
 }
 
-startServer();
+const serverReady = startServer();
 
+export { serverReady };
 export default app;
