@@ -50,7 +50,7 @@ export const CountdownView: React.FC<CountdownViewProps> = ({
       <main className="my-auto py-6 flex flex-col items-center w-full">
         {/* Exact Original BLACK ROSE MT Logo restored directly above the countdown */}
         <div className="relative mb-5 flex items-center justify-center group">
-          <div className="relative p-2 rounded-3xl bg-[#FFFAFC]/90 backdrop-blur-sm border border-[#B98575]/40 shadow-[0_12px_36px_rgba(185,133,117,0.22)] transition-transform duration-300 hover:scale-105">
+          <div className="relative p-2 rounded-full bg-[#FFFAFC]/90 backdrop-blur-sm border border-[#B98575]/40 shadow-[0_12px_36px_rgba(185,133,117,0.22)] transition-transform duration-300 hover:scale-105 overflow-hidden">
             <img
               src={primaryLogoSrc}
               alt="Official BLACK ROSE MT Logo"
