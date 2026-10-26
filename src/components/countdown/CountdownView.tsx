@@ -50,19 +50,17 @@ export const CountdownView: React.FC<CountdownViewProps> = ({
       <main className="my-auto py-6 flex flex-col items-center w-full">
         {/* Exact Original BLACK ROSE MT Logo restored directly above the countdown */}
         <div className="relative mb-5 flex items-center justify-center group">
-          <div className="relative p-2 rounded-full bg-[#FFFAFC]/90 backdrop-blur-sm border border-[#B98575]/40 shadow-[0_12px_36px_rgba(185,133,117,0.22)] transition-transform duration-300 hover:scale-105 overflow-hidden">
-            <img
-              src={primaryLogoSrc}
-              alt="Official BLACK ROSE MT Logo"
-              className="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 object-contain select-none drop-shadow-md"
-              onError={(e) => {
-                const target = e.currentTarget;
-                if (!target.src.includes('logo.png')) {
-                  target.src = '/assets/logo.png';
-                }
-              }}
-            />
-          </div>
+          <img
+            src={primaryLogoSrc}
+            alt="Official BLACK ROSE MT Logo"
+            className="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full object-cover select-none drop-shadow-md border-2 border-[#B98575]/40 shadow-[0_12px_36px_rgba(185,133,117,0.22)] transition-transform duration-300 hover:scale-105"
+            onError={(e) => {
+              const target = e.currentTarget;
+              if (!target.src.includes('logo.png')) {
+                target.src = '/assets/logo.png';
+              }
+            }}
+          />
         </div>
 
         {/* Brand Title and Roman Urdu Opening Subtitle */}
