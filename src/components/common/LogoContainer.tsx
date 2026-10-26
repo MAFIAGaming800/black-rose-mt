@@ -24,7 +24,7 @@ export const LogoContainer: React.FC<LogoContainerProps> = ({
   const hasImage = targetLogoSrc && !imageError;
 
   return (
-    <div className={`inline-flex items-center justify-center ${className}`}>
+    <div className={`inline-flex items-center justify-center rounded-full overflow-hidden ${className}`}>
       {hasImage ? (
         <img
           src={targetLogoSrc}
